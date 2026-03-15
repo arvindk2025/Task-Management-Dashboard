@@ -1,14 +1,14 @@
 # Task Management Dashboard
 
-A responsive, feature-rich **Task Management Dashboard** built with **React 19** and **TypeScript**. It supports full CRUD operations, real-time search and multi-filter, dual view modes (List & Grid), dark/light theme toggle, and data persistence via `localStorage` — entirely frontend with no backend required.
+A responsive **Task Management Dashboard** built with **React 19**, **TypeScript**, and **Material UI**. Features full **CRUD operations**, real-time search with debounce, advanced multi-select filtering by status & priority, filter persistence across sessions, dual **List / Grid** view modes with virtualized rendering, **Dark / Light** theme toggle, stat summary cards, overdue task detection, localStorage persistence, and a personalized landing page — fully client-side, no backend required.
 
 ---
 
 ## 🚀 Live Demo
 
-> **[👉 Click here to view the Live Demo](https://your-deployment-url.netlify.app)**
->
-> *(Replace this link with your Netlify / Vercel deployment URL)*
+> **[https://task-management-dashboard1.netlify.app](https://task-management-dashboard1.netlify.app/)**
+
+
 
 ---
 
