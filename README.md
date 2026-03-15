@@ -4,9 +4,39 @@ A responsive, feature-rich **Task Management Dashboard** built with **React 19**
 
 ---
 
+## 🚀 Live Demo
+
+> **[👉 Click here to view the Live Demo](https://your-deployment-url.netlify.app)**
+>
+> *(Replace this link with your Netlify / Vercel deployment URL)*
+
+---
+
+## Project Overview (Screenshots)
+
+### 🏠 Landing Page - (Light Mode)
+![Landing Page](./screenshots/landing_page_light.png)
+
+### 📋 Dashboard — List View (Dark Mode)
+![Dashboard List View](./screenshots/dashboard_dark_list_view.png)
+
+### 🔲 Dashboard — Card / Grid View (Dark Mode)
+![Dashboard Card View](./screenshots/dashboard_dark_card_view.png)
+
+### ➕ Add New Task (Dark Mode)
+![Add Task](./screenshots/add_task_dark.png)
+
+### ✏️ Edit Task (Dark Mode)
+![Edit Task](./screenshots/update_task_dark.png)
+
+### 🗑️ Delete Confirmation (Dark Mode)
+![Delete Task](./screenshots/delete_task_dark.png)
+
+---
+
 ## Features
 
-### 1) Landing Page
+### 1) Landing Page ( 🎁 Bonus Feature )
 
 - A clean welcome screen that greets the user.
 - User can optionally enter their **name**, which is stored in `sessionStorage` and displayed in the header as a personalized greeting (e.g., "Welcome, Arvind").
@@ -16,7 +46,7 @@ A responsive, feature-rich **Task Management Dashboard** built with **React 19**
 
 ### 2) Task Dashboard
 
-**Summary Stats:**
+**Summary Stats ( 🎁 Bonus Feature ):**
 - Displays **3 stat cards** at the top — **Total Tasks**, **Pending Tasks**, and **Completed Tasks**.
 - Stats update in real time as tasks are added, edited, or deleted.
 
@@ -59,12 +89,12 @@ A responsive, feature-rich **Task Management Dashboard** built with **React 19**
 **Sort Order:**
 - Tasks are always sorted **newest first** by creation date.
 
-**Filter Persistence:**
+**Filter Persistence ( 🎁 Bonus Feature ):**
 - Active filters and search query are saved to `localStorage` and restored on next visit.
 
 ---
 
-### 4) List View & Grid View
+### 4) List View & Grid View ( 🎁 Bonus Feature )
 
 Toggle between two display modes:
 
@@ -77,7 +107,7 @@ Each task card displays:
 
 ---
 
-### 5) Dark / Light Theme
+### 5) Dark / Light Theme ( 🎁 Bonus Feature )
 
 - Toggle between **Dark Mode** and **Light Mode** via the icon in the app header.
 - Theme preference is persisted in `localStorage` via Zustand's `persist` middleware.
@@ -95,6 +125,13 @@ Each task card displays:
 
 - Fully responsive across **mobile (320px+), tablet, and desktop** screen sizes.
 - Built using Material UI's responsive `sx` props, breakpoints, and `useMediaQuery`.
+
+---
+
+### 8) TypeScript ( 🎁 Bonus Feature )
+
+- Entire codebase written in **TypeScript** — strict type safety across components, stores, utilities, and validation schemas.
+- Custom interfaces and types defined for all data structures (`Task`, `TaskFormData`, `FilterState`, etc.).
 
 ---
 
@@ -161,135 +198,37 @@ src/
 
 ---
 
-## Getting Started
+## Setup and Running Instructions Locally
 
 ### Prerequisites
 
-- **Node.js** v18 or higher → [Download here](https://nodejs.org/)
-- **Yarn** (recommended):
-  ```sh
-  npm install -g yarn
-  ```
-  Or use **npm** (comes with Node.js).
-
----
-
-### Installation & Setup
-
-**Step 1 — Clone the repository:**
+- **Node.js**: v18 or higher
+- **Yarn**: Package manager
+- If not then install ```yarn package manager``` using below command through your terminal
 ```sh
-git clone https://github.com/<your-username>/task-management-dashboard.git
-cd task-management-dashboard
+npm install -g yarn
 ```
 
-**Step 2 — Install dependencies:**
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/arvindk2025/Task-Management-Dashboard.git
+cd Task-Management-Dashboard
+```
+
+2. Install dependencies:
 ```sh
 yarn install
 ```
-> Using npm? Run `npm install` instead.
 
-**Step 3 — Start the development server:**
+3. Start the development server:
 ```sh
 yarn dev
 ```
-> Using npm? Run `npm run dev` instead.
 
-**Step 4 — Open in your browser:**
-```
-http://localhost:5173
-```
-
-No environment variables, no backend, no database setup required.
+The application will be available at `http://localhost:5173`
 
 ---
 
-### Build for Production
-
-```sh
-yarn build
-```
-The production-ready files will be in the `dist/` directory.
-
-```sh
-yarn preview
-```
-Serve the production build locally to verify before deploying.
-
----
-
-## Available Scripts
-
-| Script | Description |
-|---|---|
-| `yarn dev` | Start the development server with hot reload |
-| `yarn build` | Build the app for production |
-| `yarn preview` | Preview the production build locally |
-| `yarn lint` | Run ESLint across all source files |
-| `yarn lint:fix` | Auto-fix ESLint errors |
-| `yarn format` | Format all source files with Prettier |
-| `yarn format:check` | Check formatting without making changes |
-| `yarn fix` | Run `format` + `lint:fix` together |
-
----
-
-## How It Works
-
-### Data Flow
-
-```
-User Action (Add / Edit / Delete / Filter)
-         ↓
-  React Component
-         ↓
-  useTaskStore (Zustand)  ──────────────────► localStorage (auto-persisted)
-         ↓
-  State update triggers re-render
-         ↓
-  UI reflects new state
-```
-
-### Task Persistence
-
-Tasks are serialized to JSON and stored in `localStorage` under the key `task-management-tasks`. On every page load, Zustand hydrates from this key. If no tasks exist (first visit), the 5 built-in demo tasks are loaded automatically.
-
-### Filter Persistence
-
-The active search query, status filters, and priority filters are saved under `task-management-filter-state` in `localStorage` and restored on the next visit.
-
-### Username Session
-
-The username entered on the landing page is saved in `sessionStorage` (key: `userName`). It is automatically cleared when the browser tab is closed — it does not persist across sessions.
-
----
-
-## Design Decisions
-
-**Feature-based folder structure**
-Code is organized by feature (`landing`, `task`) rather than by type, making the codebase easy to navigate and scale.
-
-**Zustand over Redux**
-Lightweight, minimal boilerplate, and excellent TypeScript support — perfectly suited for a frontend-only app of this scale.
-
-**react-window for virtualization**
-The list view uses `FixedSizeList` from `react-window` to keep rendering efficient regardless of how many tasks are in the store.
-
-**react-hook-form + Yup**
-Minimizes re-renders during form input, while Yup provides a clean declarative validation schema.
-
-**No backend / No auth**
-This is an intentionally pure frontend app. All data lives in the browser, making setup trivially simple — just `yarn install && yarn dev`.
-
----
-
-## Known Limitations
-
-- Data is stored in the browser's `localStorage` — clearing browser data will erase all tasks.
-- No synchronization across devices or browsers.
-- No user authentication or multi-user support.
-- `localStorage` has a ~5MB size limit — sufficient for typical use but could be a constraint with thousands of large-description tasks.
-
----
-
-## License
-
-This project is licensed under the **MIT License**.
